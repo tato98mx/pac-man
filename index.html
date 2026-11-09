@@ -22,7 +22,13 @@
     --line:#23234d;
   }
   *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
-  html,body{margin:0;padding:0;}
+  html,body{margin:0;padding:0;overscroll-behavior:none;}
+  /* En el celular la zona del juego no debe mover la página ni disparar
+     gestos del sistema (como bajar la pantalla con una mano): los toques
+     sobre la cabina son solo para el juego. */
+  @media (pointer:coarse){
+    .cabinet{touch-action:none;}
+  }
   body{
     background:
       radial-gradient(900px 500px at 50% -10%, #161648 0%, transparent 60%),
@@ -125,7 +131,10 @@
      Laberinto + botones + recuadro deslizable deben caber en una sola pantalla, sin bajar:
      así ninguna parte del laberinto queda fuera de vista al usar los controles. */
   @media (pointer:coarse){
-    .wrap{padding:10px 10px 26px;}
+    /* El recuadro deslizable queda lejos de la orilla inferior del teléfono:
+       si queda pegado al borde, al deslizar hacia abajo el iPhone cree que
+       quieres bajar la pantalla para alcanzarla con una mano. */
+    .wrap{padding:10px 10px max(56px, calc(env(safe-area-inset-bottom, 0px) + 36px));}
     .cabinet{padding:10px 10px 12px;}
     .hud{margin-bottom:6px;}
     .hud .val{font-size:19px;}
