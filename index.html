@@ -139,14 +139,14 @@
     /* El recuadro deslizable queda lejos de la orilla inferior del teléfono:
        si queda pegado al borde, al deslizar hacia abajo el iPhone cree que
        quieres bajar la pantalla para alcanzarla con una mano. */
-    .wrap{padding:10px 10px max(56px, calc(env(safe-area-inset-bottom, 0px) + 36px));}
+    .wrap{padding:10px 10px max(44px, calc(env(safe-area-inset-bottom, 0px) + 24px));}
     .cabinet{padding:10px 10px 12px;display:flex;flex-direction:column;}
     .hud{order:0;margin-bottom:6px;}
     .hud .val{font-size:19px;}
     .screen-wrap{
       order:1;
-      width:min(100%, calc((100vh - 500px) * 0.9032));
-      width:min(100%, calc((100dvh - 500px) * 0.9032));
+      width:min(100%, calc((100vh - 570px) * 0.9032));
+      width:min(100%, calc((100dvh - 570px) * 0.9032));
       margin:0 auto;
     }
     .msgbar{order:2;}
