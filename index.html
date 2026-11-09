@@ -131,24 +131,36 @@
      Laberinto + botones + recuadro deslizable deben caber en una sola pantalla, sin bajar:
      así ninguna parte del laberinto queda fuera de vista al usar los controles. */
   @media (pointer:coarse){
+    /* En el celular solo existe el juego: sin explicaciones ni instrucciones
+       abajo, la página no tiene nada hacia donde bajar y la pantalla no se
+       mueve al deslizar el dedo fuera del recuadro. */
+    body{overflow:hidden;}
+    .layout>section:last-child{display:none;}
     /* El recuadro deslizable queda lejos de la orilla inferior del teléfono:
        si queda pegado al borde, al deslizar hacia abajo el iPhone cree que
        quieres bajar la pantalla para alcanzarla con una mano. */
     .wrap{padding:10px 10px max(56px, calc(env(safe-area-inset-bottom, 0px) + 36px));}
-    .cabinet{padding:10px 10px 12px;}
-    .hud{margin-bottom:6px;}
+    .cabinet{padding:10px 10px 12px;display:flex;flex-direction:column;}
+    .hud{order:0;margin-bottom:6px;}
     .hud .val{font-size:19px;}
     .screen-wrap{
-      width:min(100%, calc((100vh - 412px) * 0.9032));
-      width:min(100%, calc((100dvh - 412px) * 0.9032));
+      order:1;
+      width:min(100%, calc((100vh - 500px) * 0.9032));
+      width:min(100%, calc((100dvh - 500px) * 0.9032));
       margin:0 auto;
     }
+    .msgbar{order:2;}
+    .under{order:3;}
+    /* Recuadro grande, justo bajo el laberinto, con el botón de poder debajo. */
+    .swipe-pad{order:4;margin-top:10px;height:170px;}
+    .power-bar{order:5;}
+    .controls-row{order:6;}
+    .pad-status{order:7;}
     .pad-status{margin-top:8px;padding:6px 9px;font-size:12px;}
     .msgbar{min-height:22px;font-size:13.5px;margin-top:6px;}
     .under{margin-top:8px;}
     .controls-row{flex-wrap:nowrap;margin-top:8px;}
     .controls-row button{flex:1 1 0;min-width:0;padding:9px 3px;font-size:12.5px;white-space:nowrap;}
-    .swipe-pad{margin-top:10px;height:104px;}
     .swipe-pad .sp-arrow{font-size:18px;}
   }
   @media (max-width:400px){
